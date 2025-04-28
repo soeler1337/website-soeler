@@ -82,6 +82,7 @@ header {
 
 @media (max-width: 600px) {
   .icon-label {
+	scrollbar-width: auto;
     opacity: 1 !important; /* Immer sichtbar auf Mobile */
   }
 }
