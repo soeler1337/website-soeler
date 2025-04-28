@@ -80,14 +80,18 @@ header {
     opacity: 1;
 }
 
-
+@media (max-width: 600px) {
+  .icon-label {
+    opacity: 1 !important; /* Immer sichtbar auf Mobile */
+  }
+}
 
 /* Divider */
 .divider {
     border: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, #cdb4db, transparent);
-    margin: 10px 0;
+    margin: 10px auto; /* statt 40px Abstand */
 }
 
 /* Stream Sektion */
