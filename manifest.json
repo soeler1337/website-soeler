@@ -1,0 +1,16 @@
+{
+  "name": "Soeler - Links & Streams",
+  "short_name": "Soeler",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#a8dadc",
+  "description": "Alle Links zu Soelers Content: Twitch, YouTube, Podcast, Discord und mehr.",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
