@@ -100,7 +100,7 @@
 <main>
   <div id="stream-section">
     <h2 id="stream-title">Stream lädt...</h2>
-    <iframe id="twitch-embed" src="https://player.twitch.tv/?channel=soeler1337&parent=soeler.com" frameborder="0" allowfullscreen></iframe>
+    <iframe id="twitch-embed" src="https://player.twitch.tv/?channel=soeler1337&parent=soeler.com&muted=true" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <hr class="divider">
@@ -112,8 +112,18 @@
 </main>
 
 <footer>
-  <p><a href="https://rahft.com/talents/soeler/#imprint" target="_blank">Impressum</a> </p>
-  <p> &copy; 2025 Soeler. Alle Rechte vorbehalten. 
+	<section class="contact-form">
+		<h2>Kontakt</h2>
+		<form action="https://formspree.io/f/xzzrdzpj" method="POST">
+			<input type="text" name="name" placeholder="Dein Name" required>
+			<input type="email" name="email" placeholder="Deine E-Mail" required>
+			<textarea name="message" placeholder="Deine Nachricht" required></textarea>
+			<button type="submit">Absenden</button>
+		</form>
+	</section>
+	<p><a href="https://rahft.com/talents/soeler/#imprint" target="_blank">Impressum</a> </p>
+  
+	<p> &copy; 2025 Soeler. Alle Rechte vorbehalten. </p>
 </footer>
 </body>
 </html>
