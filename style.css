@@ -27,7 +27,7 @@ body {
 header {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-bottom: 2px solid #a8dadc;
@@ -40,7 +40,7 @@ header {
     align-items: center;
     gap: 15px;
     overflow-x: auto; /* HIER der Trick! */
-    padding: 20px;
+    padding: 5px;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE 10+ */
 }
