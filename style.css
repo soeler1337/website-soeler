@@ -36,17 +36,30 @@ header {
 /* Icons */
 .icon-links {
     display: flex;
-    justify-content: center;
+	flex-wrap: nowrap; /* <-- Wichtig! Keine Zeilenumbrüche */
+    overflow-x: auto; /* <-- Scrollbar aktivieren, wenn nötig */
+    justify-content: flex-start;
     align-items: center;
     gap: 15px;
     overflow-x: auto; /* HIER der Trick! */
     padding: 5px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
+	
+	scrollbar-width: thin; /* Firefox - dünne Scrollbar */
+    scrollbar-color: #a8dadc #f7f7f7; /* Farbe für Thumb + Track */
 }
 
 .icon-links::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    height: 8px;
+}
+
+.icon-links::-webkit-scrollbar-track {
+    background: #f7f7f7;
+}
+
+.icon-links::-webkit-scrollbar-thumb {
+    background-color: #a8dadc;
+    border-radius: 10px;
+    border: 2px solid #f7f7f7;
 }
 
 .icon-container {
@@ -57,6 +70,7 @@ header {
     margin: 10px;
     flex: 0 0 auto;
     width: 100px; /* Fixe Breite */
+	min-height: 70px;
     justify-content: flex-start;
 }
 
