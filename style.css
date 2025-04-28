@@ -58,7 +58,7 @@ header {
 }
 
 .icon-container img {
-    width: 40px;
+    width: 25px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
 }
@@ -71,7 +71,7 @@ header {
 .icon-label {
     font-size: 14px;
     margin-top: 8px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease;
     color: #6d6875;
 }
@@ -85,9 +85,6 @@ header {
 	scrollbar-width: auto;
     opacity: 1 !important; /* Immer sichtbar auf Mobile */
   }
- .icon-container img {
-    width: 25px;
-}
 }
 
 /* Divider */
