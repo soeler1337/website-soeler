@@ -140,21 +140,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Easteregg Popup */
-#easteregg {
-    position: fixed;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
-    color: #6d6875;
-    padding: 12px 24px;
-    border-radius: 20px;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    z-index: 10000;
-}
-
 /* Animationen */
 @keyframes fadeOut {
     to { opacity: 0; visibility: hidden; }
