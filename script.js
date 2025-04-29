@@ -32,19 +32,13 @@ function buildIcons() {
 
 
 function loadStreamTitle() {
-    fetch(`https://api.twitch.tv/helix/streams?user_login=${SITE_CONFIG.twitch.username}`, {
-        headers: {
-            'Client-ID': SITE_CONFIG.twitch.clientId,
-            'Authorization': `Bearer ${SITE_CONFIG.twitch.accessToken}`
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.data && data.data.length > 0) {
-            document.getElementById('stream-title').textContent = data.data[0].title;
-        } else {
-            document.getElementById('stream-title').textContent = 'Aktuell offline';
-        }
+    fetch("https://soeler-twitch-proxy.vercel.app/api/stream")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("stream-title").textContent = data.live
+      ? `🔴 Live: ${data.title}`
+      : "Aktuell offline";
+  });
     })
     .catch(error => {
         console.error('Fehler beim Abrufen des Streamtitels:', error);
