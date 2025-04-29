@@ -1,8 +1,8 @@
 const SITE_CONFIG = {
   twitch: {
     username: 'soeler1337',
-    clientId: 'DEINE_CLIENT_ID',
-    accessToken: 'DEIN_ACCESS_TOKEN',
+    clientId: '4bpyorzfwx227yn2hu8uobjeyl3p60',
+    accessToken: 'zr2dp2mxt6b52y9jnbvwau5tj2cj54',
     tokenCreatedAt: '2025-04-28T12:00:00Z'
   },
   icons: [
