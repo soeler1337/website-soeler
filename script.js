@@ -38,8 +38,7 @@ function loadStreamTitle() {
     document.getElementById("stream-title").textContent = data.live
       ? `🔴 Live: ${data.title}`
       : "Aktuell offline";
-  });
-    })
+  })
     .catch(error => {
         console.error('Fehler beim Abrufen des Streamtitels:', error);
         document.getElementById('stream-title').textContent = 'Fehler beim Laden';
