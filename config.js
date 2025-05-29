@@ -23,6 +23,11 @@ const SITE_CONFIG = {
       url: "https://www.instagram.com/soeler1337",
       iconPath: "icons/instagram.png"
     },
+	{
+      name: "soelers-ecke",
+      url: "https://www.tiktok.com/@soelers_ecke",
+      iconPath: "icons/tiktok.png"
+    },
     {
       name: "soeler1337",
       url: "https://www.tiktok.com/@soeler1337",
