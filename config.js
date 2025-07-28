@@ -1,6 +1,6 @@
 const SITE_CONFIG = {
   twitch: {
-    tokenCreatedAt: '2025-04-28T12:00:00Z'
+    tokenCreatedAt: '2025-07-28T12:00:00Z'
   },
   icons: [
     {
