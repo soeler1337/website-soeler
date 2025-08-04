@@ -15,7 +15,7 @@ const SITE_CONFIG = {
     },
     {
       name: "Discord",
-      url: "https://discord.com/invite/JEpPWwyeA2",
+      url: "https://discord.gg/UDwEWXBc4z",
       iconPath: "icons/discord.png"
     },
     {
