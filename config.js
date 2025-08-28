@@ -14,7 +14,7 @@ const SITE_CONFIG = {
       iconPath: "icons/pixelart.png"
     },
     {
-      name: "Discord",
+      name: "Discord SoelerLand",
       url: "https://discord.gg/UDwEWXBc4z",
       iconPath: "icons/discord.png"
     },
