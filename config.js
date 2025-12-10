@@ -43,14 +43,14 @@ const SITE_CONFIG = {
       url: "https://youtube.com/@soeler1337",
       iconPath: "icons/youtube.png"
     },
-    {
-      name: "TaleWeaver",
-      url: "https://youtube.com/@taleweaverrpg",
+	{
+      name: "Soeler Art - Deutsch",
+      url: "https://www.youtube.com/@soelerartger",
       iconPath: "icons/youtube.png"
     },
     {
-      name: "PokeSoeler",
-      url: "https://www.youtube.com/@pokesoeler",
+      name: "TaleWeaver",
+      url: "https://youtube.com/@taleweaverrpg",
       iconPath: "icons/youtube.png"
     },
     {
