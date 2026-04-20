@@ -1,7 +1,4 @@
 const SITE_CONFIG = {
-  twitch: {
-    tokenCreatedAt: '2025-07-28T12:00:00Z'
-  },
   icons: [
     {
       name: "Loredumb Podcast",
