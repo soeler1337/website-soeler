@@ -8,7 +8,7 @@ const SITE_CONFIG = {
       url: "https://www.loredumb.com",
       iconPath: "icons/podcast.png"
     },
-	{
+    {
       name: "Pixelart Galerie",
       url: "https://www.pixilart.com/soeler/gallery",
       iconPath: "icons/pixelart.png"
@@ -23,7 +23,7 @@ const SITE_CONFIG = {
       url: "https://www.instagram.com/soeler1337",
       iconPath: "icons/instagram.png"
     },
-	{
+    {
       name: "soelers-ecke",
       url: "https://www.tiktok.com/@soelers_ecke",
       iconPath: "icons/tiktok.png"
@@ -43,7 +43,7 @@ const SITE_CONFIG = {
       url: "https://youtube.com/@soeler1337",
       iconPath: "icons/youtube.png"
     },
-	{
+    {
       name: "Soeler Art - Deutsch",
       url: "https://www.youtube.com/@soelerartger",
       iconPath: "icons/youtube.png"
