@@ -54,12 +54,11 @@ header {
 /* Icons */
 .icon-links {
     display: flex;
-	flex-wrap: nowrap; /* <-- Wichtig! Keine Zeilenumbrüche */
-    overflow-x: auto; /* <-- Scrollbar aktivieren, wenn nötig */
+    flex-wrap: nowrap;
+    overflow-x: auto;
     justify-content: flex-start;
     align-items: center;
     gap: 15px;
-    overflow-x: auto; /* HIER der Trick! */
     padding: 5px;
 	
 	scrollbar-width: thin; /* Firefox - dünne Scrollbar */
@@ -125,8 +124,7 @@ header {
 }
 @media (max-width: 600px) {
   .icon-label {
-	scrollbar-width: auto;
-    opacity: 1 !important; /* Immer sichtbar auf Mobile */
+    opacity: 1 !important;
   }
 }
 
