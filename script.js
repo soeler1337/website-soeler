@@ -44,17 +44,6 @@ function loadStreamTitle() {
         document.getElementById('stream-title').textContent = 'Fehler beim Laden';
     });
 };
-function checkTokenAge() {
-    const createdAt = new Date(SITE_CONFIG.twitch.tokenCreatedAt);
-    const now = new Date();
-    const diffDays = (now - createdAt) / (1000 * 60 * 60 * 24);
-
-    if (diffDays > 50) {
-        console.warn('%c⚠️ Dein Twitch Access Token ist älter als 50 Tage. Bitte bald erneuern!', 'color: orange; font-weight: bold;');
-    } else {
-        console.log('%c✅ Access Token Alter okay: ' + Math.round(diffDays) + ' Tage alt.', 'color: green;');
-    }
-};
 // Loading-Screen
 window.addEventListener('load', () => {
 	buildIcons();
@@ -80,6 +69,5 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelector('.contact-form').classList.add('visible');
     }, 900); // noch etwas später
-	checkTokenAge();
 	loadStreamTitle();
 });
