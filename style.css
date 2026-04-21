@@ -120,6 +120,7 @@ header {
   flex-wrap: nowrap;
   overflow-x: auto;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   padding: 4px 0;
   scrollbar-width: thin;
