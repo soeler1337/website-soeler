@@ -168,6 +168,13 @@ header {
   object-fit: cover;
 }
 
+@media (prefers-color-scheme: dark) {
+  .icon-container img {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px;
+  }
+}
+
 .icon-container:hover img {
   transform: scale(1.12);
   box-shadow: 0 4px 14px rgba(168, 218, 220, 0.5);
