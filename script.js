@@ -1,21 +1,3 @@
-// Theme
-function initTheme() {
-  var saved = localStorage.getItem("theme") || "light";
-  document.documentElement.setAttribute("data-theme", saved);
-  updateThemeBtn(saved);
-}
-function updateThemeBtn(theme) {
-  var btn = document.getElementById("theme-toggle");
-  if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
-}
-function toggleTheme() {
-  var current = document.documentElement.getAttribute("data-theme");
-  var next = current === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", next);
-  localStorage.setItem("theme", next);
-  updateThemeBtn(next);
-}
-
 // Icons
 function buildIcons() {
   var iconContainer = document.querySelector(".icon-links");
@@ -42,7 +24,7 @@ function buildIcons() {
   });
 }
 
-// Stream title
+// Stream title + avatar
 function loadStreamTitle() {
   fetch("https://soeler-twitch-proxy.vercel.app/api/stream")
     .then(function(res) { return res.json(); })
@@ -56,6 +38,10 @@ function loadStreamTitle() {
       } else {
         titleEl.textContent = "Aktuell offline";
         if (dotEl) dotEl.hidden = true;
+      }
+      if (data.profile_image_url) {
+        var avatar = document.getElementById("hero-avatar");
+        if (avatar) avatar.src = data.profile_image_url;
       }
     })
     .catch(function() {
@@ -85,7 +71,6 @@ function setCopyrightYear() {
 
 // Boot
 window.addEventListener("load", function() {
-  initTheme();
   buildIcons();
   document.getElementById("loader").style.display = "none";
   document.body.classList.add("loaded");
@@ -97,6 +82,4 @@ window.addEventListener("load", function() {
   loadStreamTitle();
   setCopyrightYear();
   initBackToTop();
-  var btn = document.getElementById("theme-toggle");
-  if (btn) btn.addEventListener("click", toggleTheme);
 });

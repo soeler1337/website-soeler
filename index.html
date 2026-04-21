@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="light">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>(function(){var t=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",t);})();</script>
+  <!-- SEO -->
   <meta name="description" content="Soeler streamt auf Twitch und erstellt coole Inhalte rund um Gaming, Pixel Art und D&D. Schau vorbei!">
   <meta name="keywords" content="soeler, Soeler, Twitch, YouTube, Podcast, Discord, Pixelart, Streamer, Creator, Loredumb, Spotify, TikTok, Instagram, soeler1337">
   <meta name="author" content="Soeler">
   <title>Soeler – Twitch Streamer &amp; Content Creator</title>
+  <!-- OpenGraph -->
   <meta property="og:title" content="Soeler – Links &amp; Stream">
   <meta property="og:description" content="Finde alle Links zu Soelers Content: Twitch, YouTube, Podcast und mehr.">
   <meta property="og:image" content="https://soeler.com/og-image.png">
   <meta property="og:url" content="https://soeler.com">
   <meta property="og:type" content="website">
+  <!-- Styles & Fonts -->
   <link rel="stylesheet" href="style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap"></noscript>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Scripts -->
   <script src="config.js"></script>
   <script defer src="script.js"></script>
+  <!-- Schema.org -->
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Soeler","url":"https://soeler.com","sameAs":["https://www.twitch.tv/soeler1337","https://youtube.com/@soeler1337","https://youtube.com/@taleweaverrpg","https://youtube.com/@soelerartger","https://www.tiktok.com/@soeler1337","https://www.instagram.com/soeler1337","https://discord.com/invite/JEpPWwyeA2","https://www.loredumb.com","https://www.pixilart.com/soeler/gallery"],"description":"Streamer, YouTuber, Podcaster und Pixelartist. Finde alle Soeler-Links hier.","image":"https://soeler.com/og-image.png"}
   </script>
@@ -32,15 +37,16 @@
 <header>
   <div class="header-inner">
     <div class="icon-links"></div>
-    <button id="theme-toggle" aria-label="Dark Mode umschalten">🌙</button>
   </div>
 </header>
 
 <main>
   <section id="hero" data-aos="fade-down">
-    <img src="favicon.png" alt="Soeler" class="hero-avatar">
-    <h1 class="hero-name">Soeler</h1>
-    <p class="hero-tagline">Streamer · YouTuber · Podcaster · Pixelartist</p>
+    <img id="hero-avatar" src="favicon.png" alt="Soeler" class="hero-avatar">
+    <div class="hero-text">
+      <h1 class="hero-name">Soeler</h1>
+      <p class="hero-tagline">Streamer · YouTuber · Podcaster · Pixelartist</p>
+    </div>
   </section>
 
   <hr class="divider" data-aos="fade-up">
