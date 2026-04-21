@@ -1,158 +1,101 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- SEO Basis -->
+  <script>(function(){var t=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="description" content="Soeler streamt auf Twitch und erstellt coole Inhalte rund um Gaming, Pixel Art und D&D. Schau vorbei!">
-  <meta name="keywords" content="soeler, Soeler, Twitch, YouTube, Podcast, Discord, Pixelart, Streamer, Creator, Loredumb, Spotify, Podcast, Tiktok, Instagram, soeler1337">
+  <meta name="keywords" content="soeler, Soeler, Twitch, YouTube, Podcast, Discord, Pixelart, Streamer, Creator, Loredumb, Spotify, TikTok, Instagram, soeler1337">
   <meta name="author" content="Soeler">
-  <title>Soeler – Twitch Streamer & Content Creator</title>
-  <!-- OpenGraph für Discord, Twitter usw. -->
-  <meta property="og:title" content="Soeler - Links & Stream">
+  <title>Soeler – Twitch Streamer &amp; Content Creator</title>
+  <meta property="og:title" content="Soeler – Links &amp; Stream">
   <meta property="og:description" content="Finde alle Links zu Soelers Content: Twitch, YouTube, Podcast und mehr.">
   <meta property="og:image" content="https://soeler.com/og-image.png">
   <meta property="og:url" content="https://soeler.com">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="style.css">
-  <script src="config.js"></script>
-  <script defer src="script.js"></script>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap"></noscript>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="config.js"></script>
+  <script defer src="script.js"></script>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Soeler",
-  "url": "https://soeler.com",
-  "sameAs": [
-    "https://www.twitch.tv/soeler1337",
-    "https://youtube.com/@soeler1337",
-	"https://youtube.com/@taleweaverrpg",
-	"https://youtube.com/@soelerartger",
-	"https://www.tiktok.com/@soeler1337",
-	"https://www.instagram.com/soeler1337",
-    "https://discord.com/invite/JEpPWwyeA2",
-    "https://www.loredumb.com",
-    "https://www.pixilart.com/soeler/gallery"
-  ],
-  "description": "Streamer, YouTuber, Podcaster und Pixelartist. Finde alle Soeler-Links hier.",
-  "image": "https://soeler.com/og-image.png"
-}
-</script>
+{"@context":"https://schema.org","@type":"Person","name":"Soeler","url":"https://soeler.com","sameAs":["https://www.twitch.tv/soeler1337","https://youtube.com/@soeler1337","https://youtube.com/@taleweaverrpg","https://youtube.com/@soelerartger","https://www.tiktok.com/@soeler1337","https://www.instagram.com/soeler1337","https://discord.com/invite/JEpPWwyeA2","https://www.loredumb.com","https://www.pixilart.com/soeler/gallery"],"description":"Streamer, YouTuber, Podcaster und Pixelartist. Finde alle Soeler-Links hier.","image":"https://soeler.com/og-image.png"}
+  </script>
 </head>
 <body>
 
-<div id="loader">
-  <h1>Soeler</h1>
-</div>
+<div id="loader"><h1>Soeler</h1></div>
 
 <header>
-  <div class="icon-links"></div>
+  <div class="header-inner">
+    <div class="icon-links"></div>
+    <button id="theme-toggle" aria-label="Dark Mode umschalten">🌙</button>
+  </div>
 </header>
 
 <main>
-  <div id="stream-section" data-aos="fade-up">
-    <h2 id="stream-title">Stream lädt...</h2>
-    <iframe id="twitch-embed" src="https://player.twitch.tv/?channel=soeler1337&parent=soeler.com&muted=true" frameborder="0" allowfullscreen></iframe>
+  <section id="hero" data-aos="fade-down">
+    <img src="favicon.png" alt="Soeler" class="hero-avatar">
+    <h1 class="hero-name">Soeler</h1>
+    <p class="hero-tagline">Streamer · YouTuber · Podcaster · Pixelartist</p>
+  </section>
+
+  <hr class="divider" data-aos="fade-up">
+
+  <div id="stream-section">
+    <div class="stream-header">
+      <span id="live-dot" class="live-dot" hidden></span>
+      <h2 id="stream-title" class="skeleton-text">Stream lädt…</h2>
+    </div>
+    <iframe id="twitch-embed"
+      src="https://player.twitch.tv/?channel=soeler1337&parent=soeler.com&muted=true"
+      frameborder="0" allowfullscreen>
+    </iframe>
   </div>
 
   <hr class="divider" data-aos="fade-up">
 
   <h2 class="gallery-heading" data-aos="fade-up">Playlists</h2>
-  <section class="gallery" data-aos="fade-up">
-    <div class="playlist-card">
-      <h3>Pokemon Champions | Road to Champion</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_0t8fZaJCdYJlbbXwnq9nL" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Pokémon Pokopia</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-IfQhtKyHQr4WjbjDZuCi7" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Gambonanza</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_RNuJtDtyeDhHKvX7R-esv" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Everything is Crab</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS79Bby3kluRdTk__hBSnoUXl" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Wow Classic Hardcore | Live | GER</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS792w13JXnHS7GObASDPoqRJ" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Slots &amp; Daggers | LIVE</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-CjQHQWwsRJf3WafnPnEjM" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Elden Ring Boss Rush Live</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_zygnc-gxVSJS5qBwHc2cj" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>LoL A-Z Challenge</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-RzsYaXqJcEOOD-7UFV0nS" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Battlefield 6 Gameplay VOD</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_qlBSANi4WQHqzJgdqfU_P" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Elden Ring Bosse – Shorts</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS78WzgbpvviISsFc5LPIaq4Y" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Elden Ring Bosse</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS79ufSir-R36DXjRuJc_DOS3" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Elden Ring First ever Playthrough | Let's Play Deutsch</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_Aii82JCg4NgoqAKCoNi8x" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>NieR: Automata – Let's Play Deutsch</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-F8Jy2Ux3_cqp7Io5A8785" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Detroit: Become Human Playthrough</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-MeOZ5D_VCXsx2w3zPPw2e" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Clair Obscur Expedition 33 Deutsch Playthrough</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-GOmJVLTtnwlIyiyH7AFc5" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="playlist-card">
-      <h3>Daily Pixel Challenge</h3>
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS78LO2nZT4uK91t5pHGexWE7" allowfullscreen loading="lazy"></iframe>
-    </div>
+  <section class="gallery">
+    <div class="playlist-card"><h3>Pokemon Champions | Road to Champion</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_0t8fZaJCdYJlbbXwnq9nL" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Pokémon Pokopia</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-IfQhtKyHQr4WjbjDZuCi7" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Gambonanza</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_RNuJtDtyeDhHKvX7R-esv" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Everything is Crab</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS79Bby3kluRdTk__hBSnoUXl" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Wow Classic Hardcore | Live | GER</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS792w13JXnHS7GObASDPoqRJ" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Slots &amp; Daggers | LIVE</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-CjQHQWwsRJf3WafnPnEjM" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Elden Ring Boss Rush Live</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_zygnc-gxVSJS5qBwHc2cj" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>LoL A-Z Challenge</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-RzsYaXqJcEOOD-7UFV0nS" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Battlefield 6 Gameplay VOD</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_qlBSANi4WQHqzJgdqfU_P" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Elden Ring Bosse – Shorts</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS78WzgbpvviISsFc5LPIaq4Y" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Elden Ring Bosse</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS79ufSir-R36DXjRuJc_DOS3" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Elden Ring First ever Playthrough | Let's Play Deutsch</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7_Aii82JCg4NgoqAKCoNi8x" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>NieR: Automata – Let's Play Deutsch</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-F8Jy2Ux3_cqp7Io5A8785" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Detroit: Become Human Playthrough</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-MeOZ5D_VCXsx2w3zPPw2e" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Clair Obscur Expedition 33 Deutsch Playthrough</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS7-GOmJVLTtnwlIyiyH7AFc5" allowfullscreen loading="lazy"></iframe></div>
+    <div class="playlist-card"><h3>Daily Pixel Challenge</h3><iframe src="https://www.youtube.com/embed/videoseries?list=PLMLksCq-zS78LO2nZT4uK91t5pHGexWE7" allowfullscreen loading="lazy"></iframe></div>
   </section>
 </main>
 
 <footer>
-	<section class="contact-form" data-aos="fade-up">
-		<h2>Kontakt</h2>
-		<form action="https://formspree.io/f/xzzrdzpj" method="POST">
-			<input type="text" name="name" placeholder="Dein Name" required>
-			<input type="email" name="email" placeholder="Deine E-Mail" required>
-			<textarea name="message" placeholder="Deine Nachricht" required></textarea>
-			<button type="submit">Absenden</button>
-		</form>
-	</section>
-	<p><a href="https://rahft.com/talents/soeler/#imprint" target="_blank">Impressum</a> </p>
-  
-	<p> &copy; 2025 <a href="https://soeler.com" target="_blank">Soeler</a>. Alle Rechte vorbehalten. </p>
+  <section class="contact-form">
+    <h2>Kontakt</h2>
+    <form action="https://formspree.io/f/xzzrdzpj" method="POST">
+      <input type="text" name="name" placeholder="Dein Name" required>
+      <input type="email" name="email" placeholder="Deine E-Mail" required>
+      <textarea name="message" placeholder="Deine Nachricht" required></textarea>
+      <button type="submit">Absenden</button>
+    </form>
+  </section>
+  <p><a href="https://rahft.com/talents/soeler/#imprint" target="_blank" rel="noopener">Impressum</a></p>
+  <p>&copy; <span id="copyright-year">2025</span> <a href="https://soeler.com">Soeler</a>. Alle Rechte vorbehalten.</p>
 </footer>
 
+<button id="back-to-top" aria-label="Nach oben">&#8679;</button>
+
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 800, // Dauer der Animation in ms
-    easing: 'ease-in-out',
-    once: true // Animation nur beim ersten Scrollen
-  });
-</script>
+<script>AOS.init({duration:750,easing:"ease-out-quad",once:true,offset:60});</script>
 </body>
 </html>
