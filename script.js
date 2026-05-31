@@ -51,6 +51,37 @@ function loadStreamTitle() {
     });
 }
 
+// Playlist carousel
+function initCarousel() {
+  var track = document.querySelector(".carousel-track");
+  var prevBtn = document.querySelector(".carousel-prev");
+  var nextBtn = document.querySelector(".carousel-next");
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    var card = track.querySelector(".playlist-card");
+    if (!card) return 320;
+    return card.offsetWidth + 20; // card width + gap
+  }
+
+  prevBtn.addEventListener("click", function() {
+    track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", function() {
+    track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+  });
+
+  // Hide/show buttons based on scroll position
+  function updateButtons() {
+    prevBtn.style.opacity = track.scrollLeft > 10 ? "1" : "0.35";
+    nextBtn.style.opacity = (track.scrollLeft + track.clientWidth < track.scrollWidth - 10) ? "1" : "0.35";
+  }
+
+  track.addEventListener("scroll", updateButtons, { passive: true });
+  updateButtons();
+}
+
 // Back to top
 function initBackToTop() {
   var btn = document.getElementById("back-to-top");
@@ -74,12 +105,18 @@ window.addEventListener("load", function() {
   buildIcons();
   document.getElementById("loader").style.display = "none";
   document.body.classList.add("loaded");
+
   var strip = document.querySelector(".icon-links");
   if (strip) strip.scrollLeft = (strip.scrollWidth - strip.clientWidth) / 2;
-  setTimeout(function() { var el = document.getElementById("stream-section"); if (el) el.classList.add("visible"); }, 100);
-  setTimeout(function() { var el = document.querySelector(".gallery"); if (el) el.classList.add("visible"); }, 500);
-  setTimeout(function() { var el = document.querySelector(".contact-form"); if (el) el.classList.add("visible"); }, 900);
+
+  setTimeout(function() { var el = document.getElementById("stream-section");  if (el) el.classList.add("visible"); }, 100);
+  setTimeout(function() { var el = document.getElementById("about-section");   if (el) el.classList.add("visible"); }, 300);
+  setTimeout(function() { var el = document.getElementById("focus-section");   if (el) el.classList.add("visible"); }, 500);
+  setTimeout(function() { var el = document.querySelector(".gallery");          if (el) el.classList.add("visible"); }, 700);
+  setTimeout(function() { var el = document.querySelector(".contact-form");     if (el) el.classList.add("visible"); }, 900);
+
   loadStreamTitle();
   setCopyrightYear();
   initBackToTop();
+  initCarousel();
 });
