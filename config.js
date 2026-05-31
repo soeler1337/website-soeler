@@ -51,11 +51,6 @@ const SITE_CONFIG = {
       iconPath: "icons/youtube.png"
     },
     {
-      name: "TaleWeaver",
-      url: "https://youtube.com/@taleweaverrpg",
-      iconPath: "icons/youtube.png"
-    },
-    {
       name: "soelers_ecke",
       url: "https://www.youtube.com/@soelers_ecke",
       iconPath: "icons/youtube.png"
