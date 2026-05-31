@@ -1,34 +1,19 @@
 const SITE_CONFIG = {
   icons: [
     {
-      name: "soeler1337",
-      url: "https://www.twitch.tv/soeler1337",
-      iconPath: "icons/twitch.png"
-    },
-    {
-      name: "Soelers Ecke",
-      url: "https://www.youtube.com/@soelers_ecke",
-      iconPath: "icons/youtube.png"
-    },
-    {
-      name: "Loredumb Podcast",
+      name: "Loredumb",
       url: "https://www.loredumb.com",
       iconPath: "icons/podcast.png"
     },
     {
+      name: "Discord",
+      url: "https://discord.gg/UDwEWXBc4z",
+      iconPath: "icons/discord.png"
+    },
+    {
       name: "soeler1337",
-      url: "https://youtube.com/@soeler1337",
-      iconPath: "icons/youtube.png"
-    },
-    {
-      name: "Soeler Art",
-      url: "https://www.youtube.com/@soelerartger",
-      iconPath: "icons/youtube.png"
-    },
-    {
-      name: "soelers_ecke",
-      url: "https://www.tiktok.com/@soelers_ecke",
-      iconPath: "icons/tiktok.png"
+      url: "https://www.instagram.com/soeler1337",
+      iconPath: "icons/instagram.png"
     },
     {
       name: "soelers_ecke",
@@ -37,18 +22,28 @@ const SITE_CONFIG = {
     },
     {
       name: "soeler1337",
+      url: "https://youtube.com/@soeler1337",
+      iconPath: "icons/youtube.png"
+    },
+    {
+      name: "soelers_ecke",
+      url: "https://www.youtube.com/@soelers_ecke",
+      iconPath: "icons/youtube.png"
+    },
+    {
+      name: "soeler1337",
+      url: "https://www.twitch.tv/soeler1337",
+      iconPath: "icons/twitch.png"
+    },
+    {
+      name: "soeler1337",
       url: "https://www.tiktok.com/@soeler1337",
       iconPath: "icons/tiktok.png"
     },
     {
-      name: "soeler1337",
-      url: "https://www.instagram.com/soeler1337",
-      iconPath: "icons/instagram.png"
-    },
-    {
-      name: "Discord",
-      url: "https://discord.gg/UDwEWXBc4z",
-      iconPath: "icons/discord.png"
+      name: "soelers_ecke",
+      url: "https://www.tiktok.com/@soelers_ecke",
+      iconPath: "icons/tiktok.png"
     },
     {
       name: "Pixelart",

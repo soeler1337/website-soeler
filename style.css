@@ -196,15 +196,21 @@ header {
 }
 
 /* =============================================
-   Hero Section (horizontal compact)
+   Hero Section (with inline bio)
    ============================================= */
 #hero {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 18px 24px;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 24px 22px;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .hero-avatar {
@@ -777,7 +783,8 @@ footer p {
    Mobile
    ============================================= */
 @media (max-width: 600px) {
-  #hero { padding: 14px 16px; gap: 14px; }
+  #hero { padding: 14px 16px 18px; }
+  .hero-top { gap: 12px; }
   .hero-avatar { width: 54px; height: 54px; }
   .hero-name { font-size: 1.1rem; }
   #stream-section iframe { height: 240px; }
