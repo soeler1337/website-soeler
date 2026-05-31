@@ -60,26 +60,47 @@ function initCarousel() {
 
   function getScrollAmount() {
     var card = track.querySelector(".playlist-card");
-    if (!card) return 320;
-    return card.offsetWidth + 20; // card width + gap
+    return card ? card.offsetWidth + 20 : 320;
   }
 
   prevBtn.addEventListener("click", function() {
     track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
   });
-
   nextBtn.addEventListener("click", function() {
     track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
   });
 
-  // Hide/show buttons based on scroll position
   function updateButtons() {
     prevBtn.style.opacity = track.scrollLeft > 10 ? "1" : "0.35";
     nextBtn.style.opacity = (track.scrollLeft + track.clientWidth < track.scrollWidth - 10) ? "1" : "0.35";
   }
-
   track.addEventListener("scroll", updateButtons, { passive: true });
   updateButtons();
+}
+
+// Playlist show more / collapse
+function initPlaylistToggle() {
+  var btn = document.getElementById("playlist-toggle");
+  if (!btn) return;
+
+  var hiddenCards = document.querySelectorAll(".carousel-track .playlist-card[hidden]");
+  if (!hiddenCards.length) { btn.style.display = "none"; return; }
+
+  var expanded = false;
+
+  btn.addEventListener("click", function() {
+    expanded = !expanded;
+    hiddenCards.forEach(function(card) {
+      if (expanded) { card.removeAttribute("hidden"); }
+      else          { card.setAttribute("hidden", ""); }
+    });
+    btn.textContent = expanded
+      ? "Weniger anzeigen"
+      : "Alle 16 Playlists anzeigen";
+    if (!expanded) {
+      document.querySelector(".carousel-track").scrollLeft = 0;
+    }
+  });
 }
 
 // Back to top
@@ -109,14 +130,14 @@ window.addEventListener("load", function() {
   var strip = document.querySelector(".icon-links");
   if (strip) strip.scrollLeft = (strip.scrollWidth - strip.clientWidth) / 2;
 
-  setTimeout(function() { var el = document.getElementById("stream-section");  if (el) el.classList.add("visible"); }, 100);
-  setTimeout(function() { var el = document.getElementById("about-section");   if (el) el.classList.add("visible"); }, 300);
-  setTimeout(function() { var el = document.getElementById("focus-section");   if (el) el.classList.add("visible"); }, 500);
-  setTimeout(function() { var el = document.querySelector(".gallery");          if (el) el.classList.add("visible"); }, 700);
-  setTimeout(function() { var el = document.querySelector(".contact-form");     if (el) el.classList.add("visible"); }, 900);
+  setTimeout(function() { var el = document.getElementById("stream-section"); if (el) el.classList.add("visible"); }, 100);
+  setTimeout(function() { var el = document.getElementById("focus-section");  if (el) el.classList.add("visible"); }, 300);
+  setTimeout(function() { var el = document.querySelector(".gallery");         if (el) el.classList.add("visible"); }, 500);
+  setTimeout(function() { var el = document.querySelector(".connect-section"); if (el) el.classList.add("visible"); }, 700);
 
   loadStreamTitle();
   setCopyrightYear();
   initBackToTop();
   initCarousel();
+  initPlaylistToggle();
 });
