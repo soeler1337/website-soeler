@@ -21,6 +21,11 @@ const SITE_CONFIG = {
       iconPath: "icons/instagram.png"
     },
     {
+      name: "soelers_ecke",
+      url: "https://www.instagram.com/soelers_ecke",
+      iconPath: "icons/instagram.png"
+    },
+    {
       name: "soelers-ecke",
       url: "https://www.tiktok.com/@soelers_ecke",
       iconPath: "icons/tiktok.png"
@@ -48,6 +53,11 @@ const SITE_CONFIG = {
     {
       name: "TaleWeaver",
       url: "https://youtube.com/@taleweaverrpg",
+      iconPath: "icons/youtube.png"
+    },
+    {
+      name: "soelers_ecke",
+      url: "https://www.youtube.com/@soelers_ecke",
       iconPath: "icons/youtube.png"
     },
     {
