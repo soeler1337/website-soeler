@@ -178,7 +178,6 @@ header {
   padding: 28px 30px 30px;
   max-width: 960px;
   margin: 0 auto;
-  border-bottom: 1px solid var(--border);
 }
 
 .hero-top {
@@ -253,7 +252,7 @@ header {
   border: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--purple), transparent);
-  margin: 0 auto;
+  margin: 24px auto;
   opacity: 0.6;
 }
 
@@ -273,7 +272,9 @@ header {
    ============================================= */
 #stream-section {
   text-align: center;
-  padding: 24px 20px 32px;
+  padding: 24px 30px 32px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 .stream-header {
   display: flex;
@@ -495,6 +496,11 @@ header {
 .carousel-prev { left: 0; }
 .carousel-next { right: 0; }
 
+/* Playlist section */
+#playlist-section {
+  padding: 8px 0 0;
+}
+
 /* Show more */
 .show-more-wrap {
   text-align: center;
@@ -565,7 +571,9 @@ header {
    Connect / Footer Section
    ============================================= */
 .connect-section {
-  padding: 36px 30px 28px;
+  padding: 40px 30px 32px;
+  max-width: 960px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -660,12 +668,15 @@ footer p { margin: 5px 0; }
   .hero-top { gap: 14px; }
   .hero-avatar { width: 58px; height: 58px; }
   .hero-name { font-size: 1.7rem; }
+  #stream-section { padding: 20px 16px 28px; }
   #stream-section iframe { height: 240px; }
   #focus-section { padding: 24px 16px; }
   .focus-grid { grid-template-columns: 1fr; }
   .carousel-wrapper { padding: 0 40px 20px; }
   .carousel-track .playlist-card { flex: 0 0 260px; }
+  .connect-section { padding: 32px 16px 28px; }
   .connect-row { flex-direction: column; align-items: center; }
+  .divider { margin: 16px auto; }
   .icon-label { opacity: 1 !important; }
   #back-to-top { bottom: 16px; right: 16px; }
 }
