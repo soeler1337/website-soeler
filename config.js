@@ -22,12 +22,12 @@ const SITE_CONFIG = {
     },
     {
       name: "soeler1337",
-      url: "https://youtube.com/@soeler1337",
+      url: "https://youtube.com/@soeler1337?sub_confirmation=1",
       iconPath: "icons/youtube.png"
     },
     {
       name: "soelers_ecke",
-      url: "https://www.youtube.com/@soelers_ecke",
+      url: "https://www.youtube.com/@soelers_ecke?sub_confirmation=1",
       iconPath: "icons/youtube.png"
     },
     {
