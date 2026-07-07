@@ -70,6 +70,49 @@ function loadStreamTitle() {
     });
 }
 
+// Latest video from Soelers Ecke (section stays hidden on failure)
+function loadLatestVideo() {
+  fetch("https://soeler-twitch-proxy.vercel.app/api/latest-video")
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (!data.video) return;
+      var v = data.video;
+      var card  = document.getElementById("latest-video-card");
+      var thumb = document.getElementById("lv-thumb");
+      var title = document.getElementById("lv-title");
+      var date  = document.getElementById("lv-date");
+      var badge = document.getElementById("lv-badge");
+      if (!card) return;
+
+      card.href = v.url || "https://www.youtube.com/@soelers_ecke";
+      thumb.src = v.thumbnail;
+      thumb.alt = v.title;
+      title.textContent = v.title;
+      if (badge) badge.hidden = !v.isShort;
+
+      if (v.published && date) {
+        var days = Math.floor((Date.now() - new Date(v.published).getTime()) / 86400000);
+        date.textContent = days <= 0 ? "Heute" : days === 1 ? "Gestern" : "vor " + days + " Tagen";
+      }
+
+      document.getElementById("latest-video-section").hidden = false;
+    })
+    .catch(function() { /* section stays hidden */ });
+}
+
+// Discord member count on the connect button
+function loadDiscordCount() {
+  fetch("https://discord.com/api/v10/invites/UDwEWXBc4z?with_counts=true")
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      var el = document.getElementById("discord-count");
+      if (el && data.approximate_member_count) {
+        el.textContent = "· " + data.approximate_member_count + " Member";
+      }
+    })
+    .catch(function() { /* leave button as is */ });
+}
+
 // Playlist facades: build placeholder, load YouTube iframe on click
 function buildPlaylistFacades() {
   document.querySelectorAll(".playlist-card[data-list]").forEach(function(card) {
@@ -175,6 +218,8 @@ document.addEventListener("DOMContentLoaded", function() {
   setTimeout(function() { var el = document.querySelector(".connect-section"); if (el) el.classList.add("visible"); }, 560);
 
   loadStreamTitle();
+  loadLatestVideo();
+  loadDiscordCount();
   setCopyrightYear();
   initBackToTop();
   buildPlaylistFacades();

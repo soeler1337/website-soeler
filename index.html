@@ -124,6 +124,24 @@
 
   <hr class="divider">
 
+  <!-- Neuestes Video (filled by JS, stays hidden if fetch fails) -->
+  <section id="latest-video-section" hidden>
+    <h2 class="section-heading">Neu von Soelers Ecke</h2>
+    <a id="latest-video-card" class="latest-video-card" href="#" target="_blank" rel="noopener">
+      <div class="lv-thumb">
+        <img id="lv-thumb" src="" alt="" loading="lazy">
+        <span class="lv-play">&#9654;</span>
+      </div>
+      <div class="lv-info">
+        <span id="lv-badge" class="lv-badge" hidden>Short</span>
+        <h3 id="lv-title"></h3>
+        <span id="lv-date" class="lv-date"></span>
+        <span class="lv-cta">Auf YouTube ansehen →</span>
+      </div>
+    </a>
+    <hr class="divider lv-divider">
+  </section>
+
   <!-- Playlists Carousel -->
   <section id="playlist-section">
   <h2 class="section-heading">Playlists</h2>
@@ -161,7 +179,7 @@
     <h2 class="section-heading">Community &amp; Support</h2>
     <div class="connect-row">
       <a href="https://discord.gg/UDwEWXBc4z" class="connect-btn" target="_blank" rel="noopener">
-        <img src="icons/discord.png" alt="Discord"> Discord
+        <img src="icons/discord.png" alt="Discord"> Discord<span id="discord-count" class="connect-count"></span>
       </a>
       <a href="https://www.youtube.com/@soelers_ecke" class="connect-btn" target="_blank" rel="noopener">
         <img src="icons/youtube.png" alt="YouTube"> Soelers Ecke
@@ -176,6 +194,9 @@
 </footer>
 
 <button id="back-to-top" aria-label="Nach oben">&#8679;</button>
+
+<!-- GoatCounter Analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://soeler.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
