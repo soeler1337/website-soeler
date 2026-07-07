@@ -64,7 +64,13 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: fadeOut 2.5s 2s forwards;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+  /* Fallback: hide even without JS */
+  animation: fadeOut 0.6s 5s forwards;
+}
+#loader.done {
+  opacity: 0;
+  visibility: hidden;
 }
 #loader h1 { animation: flicker 2s infinite alternate; }
 
@@ -326,6 +332,44 @@ header {
   display: block;
   margin-inline: auto;
 }
+#stream-section iframe[hidden] { display: none; }
+
+/* Offline card (shown instead of the player when not live) */
+.stream-offline-card {
+  width: min(92%, 560px);
+  margin: 18px auto 0;
+  padding: 30px 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.stream-offline-card[hidden] { display: none; }
+.offline-icon { font-size: 2.2rem; line-height: 1; }
+.offline-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+.offline-btn {
+  padding: 9px 22px;
+  border: 1.5px solid #9147ff;
+  border-radius: 100px;
+  color: #9147ff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.offline-btn:hover {
+  background: #9147ff;
+  color: #fff;
+}
 
 /* =============================================
    Focus Section
@@ -548,6 +592,42 @@ header {
 }
 .playlist-card iframe { width: 100%; height: 195px; border: none; display: block; }
 
+/* Playlist facade: lightweight placeholder, real player loads on click */
+.pl-facade {
+  width: 100%;
+  height: 195px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  background: linear-gradient(150deg, rgba(168, 218, 220, 0.12), rgba(205, 180, 219, 0.16));
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  transition: background 0.2s ease;
+}
+.pl-facade:hover {
+  background: linear-gradient(150deg, rgba(168, 218, 220, 0.22), rgba(205, 180, 219, 0.26));
+}
+.pl-play {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--teal-dark);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+}
+.pl-facade:hover .pl-play { transform: scale(1.1); }
+.pl-hint { font-size: 0.75rem; letter-spacing: 0.04em; }
+
 /* =============================================
    Visibility Animations
    ============================================= */
@@ -684,4 +764,20 @@ footer p { margin: 5px 0; }
 @media (max-width: 768px) {
   .focus-grid { grid-template-columns: 1fr 1fr; }
   .focus-grid .focus-card:last-child { grid-column: 1 / -1; }
+}
+
+/* =============================================
+   Reduced Motion
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #stream-section, #focus-section, .gallery, .connect-section, .icon-container {
+    opacity: 1;
+    transform: none;
+  }
 }

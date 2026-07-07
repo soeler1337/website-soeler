@@ -24,7 +24,22 @@ function buildIcons() {
   });
 }
 
-// Stream title + avatar
+// Stream: load player only when live, show offline card otherwise
+function showStreamPlayer() {
+  var player = document.getElementById("twitch-embed");
+  if (player && !player.src) player.src = player.dataset.src;
+  if (player) player.hidden = false;
+  var offline = document.getElementById("stream-offline");
+  if (offline) offline.hidden = true;
+}
+
+function showStreamOffline() {
+  var player = document.getElementById("twitch-embed");
+  if (player) player.hidden = true;
+  var offline = document.getElementById("stream-offline");
+  if (offline) offline.hidden = false;
+}
+
 function loadStreamTitle() {
   fetch("https://soeler-twitch-proxy.vercel.app/api/stream")
     .then(function(res) { return res.json(); })
@@ -35,9 +50,11 @@ function loadStreamTitle() {
       if (data.live) {
         titleEl.textContent = "Live: " + data.title;
         if (dotEl) dotEl.hidden = false;
+        showStreamPlayer();
       } else {
         titleEl.textContent = "Aktuell offline";
         if (dotEl) dotEl.hidden = true;
+        showStreamOffline();
       }
       if (data.profile_image_url) {
         var avatar = document.getElementById("hero-avatar");
@@ -48,7 +65,28 @@ function loadStreamTitle() {
       var titleEl = document.getElementById("stream-title");
       titleEl.classList.remove("skeleton-text");
       titleEl.textContent = "Status nicht verfügbar";
+      // Proxy down: show the player as safe fallback
+      showStreamPlayer();
     });
+}
+
+// Playlist facades: build placeholder, load YouTube iframe on click
+function buildPlaylistFacades() {
+  document.querySelectorAll(".playlist-card[data-list]").forEach(function(card) {
+    var facade = document.createElement("button");
+    facade.className = "pl-facade";
+    facade.setAttribute("aria-label", "Playlist abspielen");
+    facade.innerHTML = '<span class="pl-play">&#9654;</span><span class="pl-hint">Playlist laden</span>';
+    facade.addEventListener("click", function() {
+      var iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube.com/embed/videoseries?list=" + card.dataset.list + "&autoplay=1";
+      iframe.allow = "autoplay; encrypted-media; fullscreen";
+      iframe.allowFullscreen = true;
+      iframe.title = card.querySelector("h3") ? card.querySelector("h3").textContent : "YouTube Playlist";
+      card.replaceChild(iframe, facade);
+    });
+    card.appendChild(facade);
+  });
 }
 
 // Playlist carousel
@@ -59,7 +97,7 @@ function initCarousel() {
   if (!track || !prevBtn || !nextBtn) return;
 
   function getScrollAmount() {
-    var card = track.querySelector(".playlist-card");
+    var card = track.querySelector(".playlist-card:not([hidden])");
     return card ? card.offsetWidth + 20 : 320;
   }
 
@@ -121,23 +159,25 @@ function setCopyrightYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
-// Boot
-window.addEventListener("load", function() {
+// Boot — DOMContentLoaded fires as soon as the HTML is parsed,
+// no waiting for iframes/images like window "load" would
+document.addEventListener("DOMContentLoaded", function() {
   buildIcons();
-  document.getElementById("loader").style.display = "none";
+  document.getElementById("loader").classList.add("done");
   document.body.classList.add("loaded");
 
   var strip = document.querySelector(".icon-links");
   if (strip) strip.scrollLeft = (strip.scrollWidth - strip.clientWidth) / 2;
 
-  setTimeout(function() { var el = document.getElementById("stream-section"); if (el) el.classList.add("visible"); }, 100);
-  setTimeout(function() { var el = document.getElementById("focus-section");  if (el) el.classList.add("visible"); }, 300);
-  setTimeout(function() { var el = document.querySelector(".gallery");         if (el) el.classList.add("visible"); }, 500);
-  setTimeout(function() { var el = document.querySelector(".connect-section"); if (el) el.classList.add("visible"); }, 700);
+  setTimeout(function() { var el = document.getElementById("stream-section"); if (el) el.classList.add("visible"); }, 80);
+  setTimeout(function() { var el = document.getElementById("focus-section");  if (el) el.classList.add("visible"); }, 240);
+  setTimeout(function() { var el = document.querySelector(".gallery");         if (el) el.classList.add("visible"); }, 400);
+  setTimeout(function() { var el = document.querySelector(".connect-section"); if (el) el.classList.add("visible"); }, 560);
 
   loadStreamTitle();
   setCopyrightYear();
   initBackToTop();
+  buildPlaylistFacades();
   initCarousel();
   initPlaylistToggle();
 });
