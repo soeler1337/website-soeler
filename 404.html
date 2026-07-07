@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>404 – Seite nicht gefunden | Soeler</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500&display=swap"></noscript>
+  <style>
+    :root {
+      --teal: #a8dadc;
+      --teal-dark: #76c7c0;
+      --purple: #cdb4db;
+      --bg: #f4f4f8;
+      --text: #1e1e2e;
+      --text-secondary: #6d6875;
+      --border: rgba(168, 218, 220, 0.4);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d0d14;
+        --text: #e0e0f0;
+        --text-secondary: #9990aa;
+        --border: rgba(168, 218, 220, 0.12);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      padding: 24px;
+    }
+    .code {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 0.1em;
+      background: linear-gradient(120deg, var(--teal-dark) 0%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h1 { font-size: 1.2rem; font-weight: 500; margin: 0; }
+    p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; max-width: 420px; line-height: 1.6; }
+    a.home {
+      margin-top: 8px;
+      padding: 11px 28px;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    a.home:hover {
+      border-color: var(--teal);
+      color: var(--teal-dark);
+      background: rgba(168, 218, 220, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <p class="code">404</p>
+  <h1>Kritischer Fehlschlag beim Wahrnehmungswurf.</h1>
+  <p>Diese Seite existiert nicht — oder sie ist einem Gelatinewürfel zum Opfer gefallen. Zurück zum sicheren Lagerfeuer:</p>
+  <a class="home" href="/">Zur Startseite →</a>
+</body>
+</html>
