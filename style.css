@@ -541,7 +541,137 @@ header {
 .carousel-next { right: 0; }
 
 /* =============================================
-   Latest Video
+   D&D-Ecke
+   ============================================= */
+#dnd-corner {
+  padding: 8px 30px 0;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.dnd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dnd-card {
+  background: linear-gradient(160deg, var(--surface) 55%, rgba(205, 180, 219, 0.09) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--purple);
+  border-radius: var(--radius-md);
+  padding: 22px 22px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dnd-card-icon { font-size: 1.7rem; line-height: 1; }
+
+.dnd-card h3 {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.dnd-card-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.dnd-card-link {
+  font-size: 0.8rem;
+  color: var(--teal-dark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.dnd-card-link:hover { color: var(--teal); }
+
+.dnd-card-btn {
+  align-self: flex-start;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1.5px solid var(--purple);
+  border-radius: 100px;
+  color: var(--purple-dark);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.dnd-card-btn:hover {
+  background: var(--purple);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* =============================================
+   d20 (offline card)
+   ============================================= */
+.d20-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.d20-invite {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.d20-die {
+  width: 64px;
+  height: 64px;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  background: linear-gradient(140deg, var(--teal-dark), var(--purple));
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.d20-die:hover { transform: scale(1.08); filter: brightness(1.1); }
+.d20-die.rolling { animation: d20-spin 0.12s linear infinite; }
+
+@keyframes d20-spin {
+  0%   { transform: rotate(-8deg) scale(1.05); }
+  50%  { transform: rotate(8deg) scale(0.97); }
+  100% { transform: rotate(-8deg) scale(1.05); }
+}
+
+.d20-result {
+  min-height: 1.5em;
+  font-size: 0.85rem;
+  color: var(--text);
+  margin: 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+.d20-result.crit { color: var(--teal-dark); font-weight: 600; }
+.d20-result.fail { color: #e05555; font-weight: 600; }
+
+/* =============================================
+   Latest Videos
    ============================================= */
 #latest-video-section {
   padding: 8px 30px 0;
@@ -550,19 +680,24 @@ header {
 }
 #latest-video-section[hidden] { display: none; }
 
-.latest-video-card {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+.lv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.lv-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px;
+  overflow: hidden;
   text-decoration: none;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
-.latest-video-card:hover {
+.lv-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--purple);
@@ -570,13 +705,11 @@ header {
 
 .lv-thumb {
   position: relative;
-  flex: 0 0 200px;
-  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 .lv-thumb img {
   width: 100%;
-  height: 112px;
+  height: 150px;
   object-fit: cover;
   display: block;
 }
@@ -586,18 +719,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 24px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.22);
   transition: background 0.2s ease;
 }
-.latest-video-card:hover .lv-play { background: rgba(0, 0, 0, 0.45); }
+.lv-card:hover .lv-play { background: rgba(0, 0, 0, 0.45); }
 
 .lv-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 12px 14px 14px;
   min-width: 0;
+  flex: 1;
 }
 .lv-badge {
   align-self: flex-start;
@@ -605,27 +740,23 @@ header {
   border-radius: 100px;
   background: rgba(205, 180, 219, 0.25);
   color: var(--purple-dark);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 .lv-info h3 {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text);
   margin: 0;
   line-height: 1.45;
+  flex: 1;
 }
 .lv-date {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
-}
-.lv-cta {
-  font-size: 0.8rem;
-  color: var(--teal-dark);
-  font-weight: 600;
 }
 .lv-divider { margin-top: 24px; }
 
@@ -848,9 +979,10 @@ footer p { margin: 5px 0; }
   #stream-section { padding: 20px 16px 28px; }
   #stream-section iframe { height: 240px; }
   #latest-video-section { padding: 8px 16px 0; }
-  .latest-video-card { flex-direction: column; align-items: stretch; }
-  .lv-thumb { flex: none; }
-  .lv-thumb img { height: 170px; }
+  .lv-grid { grid-template-columns: 1fr; }
+  .lv-thumb img { height: 175px; }
+  #dnd-corner { padding: 8px 16px 0; }
+  .dnd-grid { grid-template-columns: 1fr; }
   #focus-section { padding: 24px 16px; }
   .focus-grid { grid-template-columns: 1fr; }
   .carousel-wrapper { padding: 0 40px 20px; }

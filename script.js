@@ -70,34 +70,139 @@ function loadStreamTitle() {
     });
 }
 
-// Latest video from Soelers Ecke (section stays hidden on failure)
-function loadLatestVideo() {
+// Relative date in German
+function relativeDate(published) {
+  var days = Math.floor((Date.now() - new Date(published).getTime()) / 86400000);
+  if (days <= 0) return "Heute";
+  if (days === 1) return "Gestern";
+  return "vor " + days + " Tagen";
+}
+
+// Latest videos from Soelers Ecke (section stays hidden on failure)
+function loadLatestVideos() {
   fetch("https://soeler-twitch-proxy.vercel.app/api/latest-video")
     .then(function(res) { return res.json(); })
     .then(function(data) {
-      if (!data.video) return;
-      var v = data.video;
-      var card  = document.getElementById("latest-video-card");
-      var thumb = document.getElementById("lv-thumb");
-      var title = document.getElementById("lv-title");
-      var date  = document.getElementById("lv-date");
-      var badge = document.getElementById("lv-badge");
-      if (!card) return;
+      var videos = data.videos || (data.video ? [data.video] : []);
+      if (!videos.length) return;
+      var grid = document.getElementById("lv-grid");
+      if (!grid) return;
 
-      card.href = v.url || "https://www.youtube.com/@soelers_ecke";
-      thumb.src = v.thumbnail;
-      thumb.alt = v.title;
-      title.textContent = v.title;
-      if (badge) badge.hidden = !v.isShort;
+      videos.slice(0, 3).forEach(function(v) {
+        var card = document.createElement("a");
+        card.className = "lv-card";
+        card.href = v.url || "https://www.youtube.com/@soelers_ecke";
+        card.target = "_blank";
+        card.rel = "noopener";
 
-      if (v.published && date) {
-        var days = Math.floor((Date.now() - new Date(v.published).getTime()) / 86400000);
-        date.textContent = days <= 0 ? "Heute" : days === 1 ? "Gestern" : "vor " + days + " Tagen";
-      }
+        var thumb = document.createElement("div");
+        thumb.className = "lv-thumb";
+        var img = document.createElement("img");
+        img.src = v.thumbnail;
+        img.alt = v.title;
+        img.loading = "lazy";
+        var play = document.createElement("span");
+        play.className = "lv-play";
+        play.innerHTML = "&#9654;";
+        thumb.appendChild(img);
+        thumb.appendChild(play);
+
+        var info = document.createElement("div");
+        info.className = "lv-info";
+        if (v.isShort) {
+          var badge = document.createElement("span");
+          badge.className = "lv-badge";
+          badge.textContent = "Short";
+          info.appendChild(badge);
+        }
+        var title = document.createElement("h3");
+        title.textContent = v.title;
+        info.appendChild(title);
+        if (v.published) {
+          var date = document.createElement("span");
+          date.className = "lv-date";
+          date.textContent = relativeDate(v.published);
+          info.appendChild(date);
+        }
+
+        card.appendChild(thumb);
+        card.appendChild(info);
+        grid.appendChild(card);
+      });
 
       document.getElementById("latest-video-section").hidden = false;
     })
     .catch(function() { /* section stays hidden */ });
+}
+
+// DM-Tipp des Tages (deterministic by day of year)
+function initDmTip() {
+  var el = document.getElementById("dm-tip");
+  var tips = window.SITE_CONFIG && SITE_CONFIG.dmTips;
+  if (!el || !tips || !tips.length) return;
+  var now = new Date();
+  var dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+  el.textContent = tips[dayOfYear % tips.length];
+}
+
+// NPC-Generator
+function initNpcGen() {
+  var btn = document.getElementById("npc-btn");
+  var out = document.getElementById("npc-result");
+  var npc = window.SITE_CONFIG && SITE_CONFIG.npc;
+  if (!btn || !out || !npc) return;
+
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  btn.addEventListener("click", function() {
+    out.textContent =
+      pick(npc.vornamen) + " " + pick(npc.beinamen) +
+      " — " + pick(npc.berufe) + ", " + pick(npc.macken) + ".";
+  });
+}
+
+// d20 roll on the offline card
+function initD20() {
+  var die = document.getElementById("d20-die");
+  var out = document.getElementById("d20-result");
+  if (!die || !out) return;
+
+  var rolling = false;
+
+  die.addEventListener("click", function() {
+    if (rolling) return;
+    rolling = true;
+    die.classList.add("rolling");
+    out.className = "d20-result";
+    out.innerHTML = "&nbsp;";
+
+    var ticks = 0;
+    var interval = setInterval(function() {
+      die.textContent = 1 + Math.floor(Math.random() * 20);
+      ticks++;
+      if (ticks >= 10) {
+        clearInterval(interval);
+        var result = 1 + Math.floor(Math.random() * 20);
+        die.textContent = result;
+        die.classList.remove("rolling");
+
+        if (result === 20) {
+          out.textContent = "Natürliche 20! Ein Omen — der nächste Stream wird legendär. 🎉";
+          out.classList.add("crit");
+        } else if (result === 1) {
+          out.textContent = "Kritischer Patzer! Der Würfel-Gott verlangt ein Opfer. Versuch's nochmal. 💀";
+          out.classList.add("fail");
+        } else if (result >= 15) {
+          out.textContent = result + " — Starker Wurf! Damit überredest du jeden Wirt.";
+        } else if (result >= 8) {
+          out.textContent = result + " — Solide. Nicht heldenhaft, aber solide.";
+        } else {
+          out.textContent = result + " — Autsch. Der DM grinst schon verdächtig.";
+        }
+        rolling = false;
+      }
+    }, 70);
+  });
 }
 
 // Discord member count on the connect button
@@ -218,8 +323,11 @@ document.addEventListener("DOMContentLoaded", function() {
   setTimeout(function() { var el = document.querySelector(".connect-section"); if (el) el.classList.add("visible"); }, 560);
 
   loadStreamTitle();
-  loadLatestVideo();
+  loadLatestVideos();
   loadDiscordCount();
+  initDmTip();
+  initNpcGen();
+  initD20();
   setCopyrightYear();
   initBackToTop();
   buildPlaylistFacades();

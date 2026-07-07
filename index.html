@@ -81,6 +81,11 @@
       <span class="offline-icon">🟣</span>
       <p class="offline-text">Gerade kein Stream — folg mir auf Twitch, um nichts zu verpassen!</p>
       <a href="https://www.twitch.tv/soeler1337" target="_blank" rel="noopener" class="offline-btn">Auf Twitch folgen →</a>
+      <div class="d20-zone">
+        <p class="d20-invite">Kein Stream? Würfle solange einen Wurf:</p>
+        <button id="d20-die" class="d20-die" aria-label="d20 würfeln">20</button>
+        <p id="d20-result" class="d20-result">&nbsp;</p>
+      </div>
     </div>
   </div>
 
@@ -124,21 +129,34 @@
 
   <hr class="divider">
 
-  <!-- Neuestes Video (filled by JS, stays hidden if fetch fails) -->
+  <!-- D&D-Ecke: Tipp des Tages + NPC-Generator -->
+  <section id="dnd-corner">
+    <h2 class="section-heading">Aus der D&amp;D-Ecke</h2>
+    <div class="dnd-grid">
+
+      <div class="dnd-card">
+        <span class="dnd-card-icon">📜</span>
+        <h3>DM-Tipp des Tages</h3>
+        <p id="dm-tip" class="dnd-card-text">…</p>
+        <a href="https://www.youtube.com/@soelers_ecke" target="_blank" rel="noopener" class="dnd-card-link">Mehr Tipps auf Soelers Ecke →</a>
+      </div>
+
+      <div class="dnd-card">
+        <span class="dnd-card-icon">🧙</span>
+        <h3>NPC-Generator</h3>
+        <p id="npc-result" class="dnd-card-text">Dein nächster NPC wartet schon…</p>
+        <button id="npc-btn" class="dnd-card-btn">NPC auswürfeln 🎲</button>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Neueste Videos (filled by JS, stays hidden if fetch fails) -->
   <section id="latest-video-section" hidden>
     <h2 class="section-heading">Neu von Soelers Ecke</h2>
-    <a id="latest-video-card" class="latest-video-card" href="#" target="_blank" rel="noopener">
-      <div class="lv-thumb">
-        <img id="lv-thumb" src="" alt="" loading="lazy">
-        <span class="lv-play">&#9654;</span>
-      </div>
-      <div class="lv-info">
-        <span id="lv-badge" class="lv-badge" hidden>Short</span>
-        <h3 id="lv-title"></h3>
-        <span id="lv-date" class="lv-date"></span>
-        <span class="lv-cta">Auf YouTube ansehen →</span>
-      </div>
-    </a>
+    <div id="lv-grid" class="lv-grid"></div>
     <hr class="divider lv-divider">
   </section>
 
