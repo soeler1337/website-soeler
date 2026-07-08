@@ -138,7 +138,7 @@ function loadLatestVideos() {
 // DM-Tipp des Tages (deterministic by day of year)
 function initDmTip() {
   var el = document.getElementById("dm-tip");
-  var tips = window.SITE_CONFIG && SITE_CONFIG.dmTips;
+  var tips = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG.dmTips : null;
   if (!el || !tips || !tips.length) return;
   var now = new Date();
   var dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
@@ -149,7 +149,7 @@ function initDmTip() {
 function initNpcGen() {
   var btn = document.getElementById("npc-btn");
   var out = document.getElementById("npc-result");
-  var npc = window.SITE_CONFIG && SITE_CONFIG.npc;
+  var npc = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG.npc : null;
   if (!btn || !out || !npc) return;
 
   function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
