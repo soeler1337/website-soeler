@@ -1,13 +1,13 @@
 const SITE_CONFIG = {
   // Ein Tipp pro Tag, rotiert automatisch (Tag im Jahr % Anzahl)
   dmTips: [
-    "Sag nicht Nein — sag 'Ja, aber…'. Spieler-Ideen aufgreifen macht jede Session besser als jedes vorbereitete Skript.",
+    "Sag nicht Nein, sag 'Ja, aber…'. Spieler-Ideen aufgreifen macht jede Session besser als jedes vorbereitete Skript.",
     "Bereite Situationen vor, keine Lösungen. Deine Spieler finden eh einen Weg, an den du nie gedacht hast.",
     "Gib jedem NPC eine Eigenheit: eine Geste, ein Sprachtick, ein Geruch. Mehr braucht es nicht, damit er im Kopf bleibt.",
     "Wenn die Gruppe plant, lehn dich zurück und hör zu. Die besten Plot-Hooks schreiben deine Spieler selbst.",
     "Ein Kampf wird spannender durch das Terrain, nicht durch mehr HP. Gib ihnen was zum Klettern, Umwerfen und Anzünden.",
-    "Fail forward: Ein Patzer sollte die Story verkomplizieren, nicht stoppen. 'Du öffnest das Schloss — aber laut.'",
-    "Stiehl schamlos. Jede Serie, jedes Buch, jedes Spiel ist Beute. Deine Spieler merken es nicht — und wenn doch, feiern sie es.",
+    "Fail forward: Ein Patzer sollte die Story verkomplizieren, nicht stoppen. 'Du öffnest das Schloss, aber laut.'",
+    "Stiehl schamlos. Jede Serie, jedes Buch, jedes Spiel ist Beute. Deine Spieler merken es nicht, und wenn doch, feiern sie es.",
     "Der Würfel ist nicht dein Chef. Wenn ein Wurf die Session ruinieren würde, war es der falsche Wurf.",
     "Session 0 ist keine Option, sondern Pflicht. Erwartungen klären spart dir zehn unangenehme Gespräche später.",
     "Beende jede Session mit einem Cliffhanger oder einer offenen Frage. Das ist der Grund, warum alle nächste Woche wiederkommen.",

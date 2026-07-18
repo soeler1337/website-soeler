@@ -157,7 +157,7 @@ function initNpcGen() {
   btn.addEventListener("click", function() {
     out.textContent =
       pick(npc.vornamen) + " " + pick(npc.beinamen) +
-      " — " + pick(npc.berufe) + ", " + pick(npc.macken) + ".";
+      ": " + pick(npc.berufe) + ", " + pick(npc.macken) + ".";
   });
 }
 
@@ -187,17 +187,17 @@ function initD20() {
         die.classList.remove("rolling");
 
         if (result === 20) {
-          out.textContent = "Natürliche 20! Ein Omen — der nächste Stream wird legendär. 🎉";
+          out.textContent = "Natürliche 20! Ein gutes Omen: Der nächste Stream wird legendär. 🎉";
           out.classList.add("crit");
         } else if (result === 1) {
           out.textContent = "Kritischer Patzer! Der Würfel-Gott verlangt ein Opfer. Versuch's nochmal. 💀";
           out.classList.add("fail");
         } else if (result >= 15) {
-          out.textContent = result + " — Starker Wurf! Damit überredest du jeden Wirt.";
+          out.textContent = result + ": Starker Wurf! Damit überredest du jeden Wirt.";
         } else if (result >= 8) {
-          out.textContent = result + " — Solide. Nicht heldenhaft, aber solide.";
+          out.textContent = result + ": Solide. Nicht heldenhaft, aber solide.";
         } else {
-          out.textContent = result + " — Autsch. Der DM grinst schon verdächtig.";
+          out.textContent = result + ": Autsch. Der DM grinst schon verdächtig.";
         }
         rolling = false;
       }
@@ -307,7 +307,7 @@ function setCopyrightYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
-// Boot — DOMContentLoaded fires as soon as the HTML is parsed,
+// Boot: DOMContentLoaded fires as soon as the HTML is parsed,
 // no waiting for iframes/images like window "load" would
 document.addEventListener("DOMContentLoaded", function() {
   buildIcons();
